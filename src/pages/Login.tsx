@@ -18,9 +18,11 @@ export default function Login() {
     return (
         <>
             <h1>Login Page</h1>
-            {/* simulated login */}
-            <input value="DemoUser"></input>
-            <button onClick={handleLogin}>Login</button>
+            <div style={{ display: 'flex', gap: '2rem'}}>
+                {/* simulated login */}
+                <input value="DemoUser"></input>
+                <button onClick={handleLogin} style={{color: 'white'}}>Login</button>
+            </div>
         </>
     )
 }

@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from 'react-router'
+import { Link, Route, Routes, useNavigate } from 'react-router'
 import './App.css'
 import Home from './pages/Home'
 import BlogIndex from './pages/BlogIndex'
@@ -12,21 +12,30 @@ function App() {
   // import auth state
   const { isAuthenticated, logout} = useAuth();
 
+  // handle logout redirect to home page
+  const navigate = useNavigate();
+  
+  function handleLogout() {
+    logout();
+    // if not on admin page when logging out, redirect to home / logout on admin page will redirect to login page
+    navigate("/");
+  }
+
   return (
     <>
       {/* nav bar to show on every page */}
-      <nav>
+      <nav style={{ display: 'flex', gap: '2rem', justifyContent: 'center', alignItems: 'center'}}>
         <Link to="/">Home</Link>
         <Link to="/blog">Blog</Link>
         {/* conditional links/buttons */}
         <div>
           {isAuthenticated ? (
-            <div>
+            <div style={{ display:'flex', gap:'2rem', alignItems:'center' }}>
               <Link to="/admin">Admin</Link>
-              <button onClick={logout}>Logout</button>
+              <button onClick={handleLogout} style={{color: "white"}}>Logout</button>
             </div>
           ) : (
-            <button><Link to="/login">Login</Link></button>
+            <Link to="/login" id="button-link" style={{color: "white"}}>Login</Link>
           )}
         </div>
       </nav>
