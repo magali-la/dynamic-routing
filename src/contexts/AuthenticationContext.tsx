@@ -24,7 +24,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode}) => {
     }
 
     const value: AuthContextTypes = {
-        isAuthenticated,
+        // tie the value from the types to the state of the same name for use elsewhere
+        isAuthenticated: isAuthenticated,
         login,
         logout
     }
