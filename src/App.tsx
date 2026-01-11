@@ -3,6 +3,7 @@ import './App.css'
 import Home from './pages/Home'
 import BlogIndex from './pages/BlogIndex'
 import BlogPost from './pages/BlogPost'
+import Login from './pages/Login'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/blog">Blog</Link>
+        <Link to="/login">Login</Link>
       </nav>
 
       {/* routes */}
@@ -24,6 +26,8 @@ function App() {
           {/* child element */}
           <Route path=":slug" element={<BlogPost />} />
         </Route>
+        {/* login page route */}
+        <Route path='login' element={<Login />}/>
       </Routes>
     </>
   )
